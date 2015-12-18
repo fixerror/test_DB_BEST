@@ -21,7 +21,10 @@
     "jquery": "~2.1.4",
     "bootstrap": "~3.3.5",
     "font-awesome": "fontawesome#~4.4.0",
-    "angular-resource": "~1.4.7"
+    "angular-resource": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "angular-toastr": "~1.6.0",
+    "bootswatch-cerulean-wiredep": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.6"

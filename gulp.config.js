@@ -28,14 +28,14 @@ module.exports = function () {
             css: path.join(root, 'dist.dev/css'),
             img: path.join(root, 'dist.dev/img'),
             scripts: path.join(root, 'dist.dev/js'),
-            partialas: path.join(root, 'dist.dev/components')
+            partialas: path.join(root, 'dist.dev/view')
         },
         prod: {
             prod: path.join(root, 'dist.prod'),
             css: path.join(root, 'dist.prod/css'),
             img: path.join(root, 'dist.prod/img'),
             scripts: path.join(root, 'dist.prod/js'),
-            partialas: path.join(root, 'dist.prod/components')
+            partialas: path.join(root, 'dist.prod/view')
         }
     };
     return config;

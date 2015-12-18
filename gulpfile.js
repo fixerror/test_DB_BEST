@@ -63,7 +63,7 @@ pipes.builtBootstapDev = function () {
 };
 
 pipes.VendorScripts = function () {
-    return plugins.order(['jquery.js', 'angular.js', 'angular-router.js', 'bootstrap.js']);
+    return plugins.order(['jquery.js', 'angular.js', 'angular-ui-router.js', 'bootstrap.js']);
 };
 
 pipes.validatedAppScripts = function () {
