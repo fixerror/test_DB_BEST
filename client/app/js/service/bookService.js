@@ -2,13 +2,13 @@
  * Created by FixError on 18.12.2015.
  */
 (function () {
-    angular.module('app.book').service('bookService', ['$http', '$q', '$log', bookService]);
-    function bookService($http, $q, $log) {
+    angular.module('app.book').service('bookService', ['myConfig','$http', '$q', '$log', bookService]);
+    function bookService(myConfig, $http, $q, $log) {
 
         var me = this;
 
         me.getBookId = function getBookId(bookId) {
-            return $http.get('api/books/' + bookId)
+            return $http.get(myConfig.base_url + 'api/books/' + bookId)
                 .then(function (response) {
                     return response.data;
                 })
@@ -19,7 +19,7 @@
         };
 
         me.getBookAll = function getBookAll() {
-            return $http.get('https://vast-harbor-5498.herokuapp.com/' + 'api/books')
+            return $http.get(myConfig.base_url + 'api/books')
                 .then(function (response) {
                     return response.data;
                 })
@@ -30,9 +30,9 @@
         };
 
         me.addBook = function addBook(newBook) {
-            return $http.post('https://vast-harbor-5498.herokuapp.com/' + 'api/books', newBook)
+            return $http.post(myConfig.base_url + 'api/books', newBook)
                 .then(function (response) {
-                    $log.log('Add book:'  + "status:" + response.statusText);
+                    $log.debug('Add book:'  + "status:" + response.statusText);
                     return response.data;
                 })
                 .catch(function (response) {
@@ -42,9 +42,9 @@
         };
 
         me.deleteBook = function deleteBook(bookId) {
-            return $http.delete('https://vast-harbor-5498.herokuapp.com/' + 'api/books/' + bookId)
+            return $http.delete(myConfig.base_url + 'api/books/' + bookId)
                 .then(function (response) {
-                    $log.log('Delete book:' + "status:" + response.statusText);
+                    $log.debug('Delete book:' + "status:" + response.statusText);
                     return response.data;
                 })
                 .catch(function (response) {
@@ -54,9 +54,9 @@
         };
 
         me.updateBook = function updateBook(bookId) {
-            return $http.put('api/books/' + bookId, {params: {bookId: bookId}})
+            return $http.put(myConfig.base_url + 'api/books/' + bookId, {params: {bookId: bookId}})
                 .then(function (response) {
-                    $log.log('Update book:' + response.bookId + "status:" + response.statusText);
+                    $log.debug('Update book:' + response.bookId + "status:" + response.statusText);
                     return $q.reject('Update book.');
                 })
                 .catch(function (response) {
