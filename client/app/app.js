@@ -2,16 +2,16 @@
  * Created by FixError on 17.12.2015.
  */
 (function () {
-    var app = angular.module('app', ['ui.router']);
+    var app = angular.module('app.book', ['ui.router','toastr']);
     app.config(['$logProvider', '$stateProvider', '$urlRouterProvider', function ($logProvider, $stateProvider, $urlRouterProvider) {
         $logProvider.debugEnabled(true);
         $urlRouterProvider.otherwise('/');
         $stateProvider
-            .state('menu', {
+            .state('home', {
                 url: '/',
                 templateUrl: './view/menu.html',
                 controller: 'MenuController',
-                controllerAs: 'menu'
+                controllerAs: 'home'
             })
             .state('books', {
                 url: '/books',
@@ -20,6 +20,26 @@
                 controllerAs: 'books'
             });
     }]);
+
+    app.config(function(toastrConfig) {
+        angular.extend(toastrConfig, {
+            autoDismiss: false,
+            containerId: 'toast-container',
+            maxOpened: 0,
+            showDuration: "300",
+            timeOut: "2000",
+           // newestOnTop: true,
+            positionClass: 'toast-top-center',
+            preventDuplicates: false,
+            preventOpenDuplicates: false,
+            target: 'body'
+        });
+    });
+
+    app.config(function ($httpProvider) {
+        $httpProvider.defaults.useXDomain = true;
+        delete $httpProvider.defaults.headers.common['X-Requested-With'];
+    });
 
     app.run(['$rootScope', '$log', function ($rootScope, $log) {
         $rootScope.$on('$stateNotFound', function (event, unfoundState, fromState, fromParams) {
