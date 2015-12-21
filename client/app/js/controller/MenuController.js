@@ -3,16 +3,8 @@
  */
 (function () {
     angular.module('app.book')
-        .controller('MenuController', ['bookService', 'notifier', '$state', '$log', menuController]);
-    function menuController(bookService, notifier, $state, $log) {
+        .controller('MenuController', [menuController]);
+    function menuController() {
         var vm = this;
-        bookService.getBookAll()
-            .then(function (books) {
-                vm.booksAll = books;
-            }).catch(showError)
-
-        function showError(message) {
-            notifier.error(message);
-        }
     }
 }());

@@ -2,32 +2,40 @@
  * Created by FixError on 17.12.2015.
  */
 (function () {
-    var app = angular.module('app.book', ['ui.router','toastr']);
+    var app = angular.module('app.book', ['ui.router', 'toastr']);
     app.config(['$logProvider', '$stateProvider', '$urlRouterProvider', function ($logProvider, $stateProvider, $urlRouterProvider) {
         $logProvider.debugEnabled(true);
         $urlRouterProvider.otherwise('/');
-        $stateProvider
-            .state('home', {
-                url: '/',
+        $stateProvider.
+            state('menu', {
+                abstract: true,
+                url: '',
                 templateUrl: './view/menu.html',
-                controller: 'MenuController',
-                controllerAs: 'home'
+                controller: 'AbstractCtrl',
+                controllerAs: 'menu'
             })
-            .state('books', {
-                url: '/books',
-                templateUrl: './view/books.html',
-                controller: 'BookController',
-                controllerAs: 'books'
+            .state('menu.home', {
+                        url: '/',
+                        templateUrl: './view/home.html',
+                        controller: 'MenuController',
+                        controllerAs: 'home'
+            })
+            .state('menu.books', {
+                        url: '/books',
+                        templateUrl: './view/books.html',
+                        controller: 'BookController',
+                        controllerAs: 'books'
             });
+
     }]);
-    app.config(function(toastrConfig) {
+    app.config(function (toastrConfig) {
         angular.extend(toastrConfig, {
             autoDismiss: false,
             containerId: 'toast-container',
             maxOpened: 0,
             showDuration: "300",
             timeOut: "2000",
-           // newestOnTop: true,
+            // newestOnTop: true,
             positionClass: 'toast-top-center',
             preventDuplicates: false,
             preventOpenDuplicates: false,

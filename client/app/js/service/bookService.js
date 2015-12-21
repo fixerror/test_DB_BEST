@@ -17,8 +17,9 @@
                     return $q.reject('Error retrieving book.');
                 });
         };
+
         me.getBookAll = function getBookAll() {
-            return $http.get('http://localhost:8080/' + 'api/books')
+            return $http.get('https://vast-harbor-5498.herokuapp.com/' + 'api/books')
                 .then(function (response) {
                     return response.data;
                 })
@@ -27,10 +28,9 @@
                     return $q.reject('Error retrieving books.');
                 });
         };
+
         me.addBook = function addBook(newBook) {
-            return $http.post('http://localhost:8080/' + 'api/books',
-                    newBook
-                )
+            return $http.post('https://vast-harbor-5498.herokuapp.com/' + 'api/books', newBook)
                 .then(function (response) {
                     $log.log('Add book:'  + "status:" + response.statusText);
                     return response.data;
@@ -39,9 +39,10 @@
                     $log.error('Error retrieving books: ' + response.statusText);
                     return $q.reject('Error retrieving books.');
                 });
-        }
+        };
+
         me.deleteBook = function deleteBook(bookId) {
-            return $http.delete('http://localhost:8080/' + 'api/books/' + bookId)
+            return $http.delete('https://vast-harbor-5498.herokuapp.com/' + 'api/books/' + bookId)
                 .then(function (response) {
                     $log.log('Delete book:' + "status:" + response.statusText);
                     return response.data;

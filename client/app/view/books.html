@@ -3,8 +3,8 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <h1>Menu</h1>
             <ul class="nav nav-pills nav-stacked">
-                <li><a ui-sref="home">MENU</a></li>
-                <li class="active"><a ui-sref="books">BOOK</a></li>
+                <li><a ui-sref="menu.home">HOME</a></li>
+                <li class="active"><a ui-sref="menu.books">BOOK</a></li>
             </ul>
         </div>
     </div>
@@ -13,11 +13,11 @@
 
         <form class="form-inline">
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="BOOK NAME" ng-model="books.newNameBook">
-                <input type="text" class="form-control" placeholder="AUTHOR NAME" ng-model="books.newAuthor">
-                <input type="date" class="form-control" placeholder="DATA" ng-model="books.newData">
+                <input type="text" class="form-control" placeholder="BOOK NAME" ng-model="menu.newNameBook">
+                <input type="text" class="form-control" placeholder="AUTHOR NAME" ng-model="menu.newAuthor">
+                <input type="date" class="form-control" placeholder="DATA" ng-model="menu.newData">
                 <button type="submit" class="btn btn-success"
-                        ng-click="books.addBook(books.newNameBook, books.newAuthor, books.newData)"><i
+                        ng-click="menu.addBook(menu.newNameBook, menu.newAuthor, menu.newData)"><i
                         class="fa fa-plus-circle"></i> ADD BOOK
                 </button>
             </div>
@@ -41,7 +41,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="book in books.booksAll track by $index">
+                <tr ng-repeat="book in menu.booksAll track by $index">
                     <td>{{$index +1}}</td>
                     <td>{{book.nameBook}}</td>
                     <td>{{book.author}}</td>
@@ -53,7 +53,7 @@
                     </td>
                     <td>
                         <button type="button" class="btn btn-danger btn-sm"
-                                ng-click="books.removeBook(book)"><i class="fa fa-trash-o"></i>DELETE
+                                ng-click="menu.removeBook(book)"><i class="fa fa-trash-o"></i>DELETE
                         </button>
                     </td>
                 </tr>
