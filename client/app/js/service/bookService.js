@@ -17,7 +17,6 @@
                     return $q.reject('Error retrieving book.');
                 });
         };
-
         me.getBookAll = function getBookAll() {
             return $http.get('http://localhost:8080/' + 'api/books')
                 .then(function (response) {

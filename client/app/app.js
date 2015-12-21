@@ -20,7 +20,6 @@
                 controllerAs: 'books'
             });
     }]);
-
     app.config(function(toastrConfig) {
         angular.extend(toastrConfig, {
             autoDismiss: false,

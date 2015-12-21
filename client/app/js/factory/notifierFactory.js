@@ -8,7 +8,6 @@
         .factory('notifier', ['toastr',notifier]);
 
     function notifier(toastr) {
-
         return {
             success: success,
             error: error
