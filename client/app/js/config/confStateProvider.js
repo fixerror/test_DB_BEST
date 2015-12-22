@@ -25,6 +25,10 @@
                     templateUrl: './view/books.html',
                     controller: 'BookController',
                     controllerAs: 'books'
+                })
+                .state('menu.books.update', {
+                    url: '/update/:id',
+                    templateUrl: './view/books.update.html',
                 });
         }]);
 }());
