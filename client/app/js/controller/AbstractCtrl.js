@@ -43,7 +43,7 @@
             $log.debug(updateBook);
             bookService.updateBook(updateBook)
                 .then(function (message) {
-                    successInfo("Book " + updateBook.updateBook + " update!");
+                    successInfo("Book " + updateBook.nameBook + " update!");
                     bookALL();
                 }).catch(showError)
             $state.go('menu.books',{inherit: false});
