@@ -3,7 +3,7 @@
  */
 (function () {
     angular.module('app.book')
-        .controller('MenuController', [menuController]);
+        .controller('HomeController', [menuController]);
     function menuController() {
         var vm = this;
     }

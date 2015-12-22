@@ -17,7 +17,7 @@
                 .state('menu.home', {
                     url: '/',
                     templateUrl: './view/home.html',
-                    controller: 'MenuController',
+                    controller: 'HomeController',
                     controllerAs: 'home'
                 })
                 .state('menu.books', {
