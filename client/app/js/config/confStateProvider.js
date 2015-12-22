@@ -28,7 +28,7 @@
                 })
                 .state('menu.books.update', {
                     url: '/update/:id',
-                    templateUrl: './view/books.update.html',
+                    templateUrl: './view/books.update.html'
                 });
         }]);
 }());

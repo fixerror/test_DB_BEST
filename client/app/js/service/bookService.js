@@ -53,11 +53,11 @@
                 });
         };
 
-        me.updateBook = function updateBook(bookId) {
-            return $http.put(myConfig.base_url + 'api/books/' + bookId, {params: {bookId: bookId}})
+        me.updateBook = function updateBook(updateBook) {
+            return $http.put(myConfig.base_url + 'api/books', updateBook)
                 .then(function (response) {
-                    $log.debug('Update book:' + response.bookId + "status:" + response.statusText);
-                    return $q.reject('Update book.');
+                    $log.debug('Update book:' +  "status:" + response.statusText);
+                    return response.data;
                 })
                 .catch(function (response) {
                     $log.error('Error update books: ' + response.statusText);
