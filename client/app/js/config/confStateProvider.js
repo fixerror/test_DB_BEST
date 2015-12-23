@@ -4,7 +4,7 @@
 (function () {
     angular.module('app.book')
         .config(['$logProvider', '$stateProvider', '$urlRouterProvider', function ($logProvider, $stateProvider, $urlRouterProvider) {
-            $logProvider.debugEnabled(true);
+            $logProvider.debugEnabled(false);
             $urlRouterProvider.otherwise('/');
             $stateProvider.
                 state('menu', {

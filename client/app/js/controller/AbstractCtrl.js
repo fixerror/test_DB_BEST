@@ -3,9 +3,12 @@
  */
 (function () {
     angular.module('app.book')
-        .controller('AbstractCtrl', ['bookService', 'notifier', '$state', '$log', AbstractCtrl]);
-    function AbstractCtrl(bookService, notifier, $state, $log) {
+        .controller('AbstractCtrl', ['bookService', 'notifier', '$state','$filter', '$log', AbstractCtrl]);
+    function AbstractCtrl(bookService, notifier, $state, $filter, $log) {
         var vm = this;
+
+        vm.reverseSort=false;
+
         var bookALL = function () {
             bookService.getBookAll()
                 .then(function (books) {
@@ -25,6 +28,9 @@
             bookService.addBook(newBook)
                 .then(function (message) {
                     successInfo("Book " + newBook.nameBook + " add!");
+                    vm.newNameBook="";
+                    vm.newAuthor="";
+                    vm.newData="";
                     bookALL();
                 }).catch(showError)
         };
@@ -66,6 +72,13 @@
                     vm.updateAuthor = booksID.author;
                     vm.updateData = (booksID.data).slice(0, 10);
                 }).catch(showError)
+        };
+        var orderBy= $filter('orderBy');
+
+        vm.orderByField= function(predicate) {
+            vm.predicate = predicate;
+            vm.reverse = (vm.predicate === predicate) ? !vm.reverse : false;
+            vm.booksAll=orderBy(vm.booksAll, predicate, vm.reverse)
         };
 
         function showError(message) {

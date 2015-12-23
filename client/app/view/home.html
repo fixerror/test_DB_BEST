@@ -15,13 +15,22 @@
                 <thead>
                 <tr>
                     <th>№</th>
-                    <th>NAME BOOK</th>
-                    <th>AUTHOR</th>
-                    <th>DATA</th>
+                    <th><a href="" ng-click="menu.orderByField('nameBook'); menu.reverseSort = !menu.reverseSort">NAME BOOK
+                        <span ng-show="menu.predicate === 'nameBook' && !menu.reverse" class="fa fa-caret-down"></span>
+                        <span ng-show="menu.predicate === 'nameBook' && menu.reverse" class="fa fa-caret-up"></span>
+                    </a></th>
+                    <th><a href="" ng-click="menu.orderByField('author'); menu.reverseSort = !menu.reverseSort">AUTHOR
+                        <span ng-show="menu.predicate === 'author' && !menu.reverse" class="fa fa-caret-down"></span>
+                        <span ng-show="menu.predicate === 'author' && menu.reverse" class="fa fa-caret-up"></span>
+                    </a></th>
+                    <th><a href="" ng-click="menu.orderByField('data'); menu.reverseSort = !menu.reverseSort">DATA
+                        <span ng-show="menu.predicate === 'data' && !menu.reverse" class="fa fa-caret-down"></span>
+                        <span ng-show="menu.predicate === 'data' && menu.reverse" class="fa fa-caret-up"></span>
+                    </a></th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="book in menu.booksAll track by $index">
+                <tr ng-repeat="book in menu.booksAll | filter:searchText">
                     <td>{{$index +1}}</td>
                     <td>{{book.nameBook}}</td>
                     <td>{{book.author}}</td>
